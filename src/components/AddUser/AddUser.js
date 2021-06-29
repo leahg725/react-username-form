@@ -29,11 +29,11 @@ const AddUser = props => {
     <form onSubmit={submitHandler}>
       <div className={styles.input}>
         <div>
-          <label>Username</label>
+          <label htmlFor="username">Username</label>
           <input type="text" value={enteredUsername} onChange={usernameChangeHandler} />
         </div>
         <div>
-          <label>Age (Years)</label>
+          <label htmlFor="age">Age (Years)</label>
           <input type="number" value={enteredAge} onChange={ageChangeHandler} />
         </div>
         <button className={buttonStyles.button} type="submit">Add User</button>
