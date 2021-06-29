@@ -3,13 +3,15 @@ import buttonStyles from '../UI/Button.module.css';
 import Card from '../UI/Card';
 
 const ErrorModal = props => {
+  let title;
   let text;
+  props.age ? title = 'Invalid Input' : title = 'Invalid Age';
   props.age ? text = 'Please enter a valid name and age (non-empty values).' : text = 'Please enter a valid age (> 0).';
   return (
     <div>
       <Card className={`${styles.modal} card`}>
         <div className={styles.header}>
-          <h2>Invalid Input</h2>
+          <h2>{title}</h2>
         </div>
         <div className={styles.content}>
           <p>{text}</p>
