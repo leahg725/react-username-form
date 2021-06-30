@@ -1,28 +1,23 @@
-import { useState } from 'react';
+import { useRef } from 'react';
 import styles from './AddUser.module.css';
 import buttonStyles from '../UI/Button.module.css';
 
 const AddUser = props => {
-  const [enteredUsername, setEnteredUsername] = useState('');
-  const [enteredAge, setEnteredAge] = useState('');
-
-  const usernameChangeHandler = event => {
-    setEnteredUsername(event.target.value);
-  }
-  const ageChangeHandler = event => {
-    setEnteredAge(event.target.value);
-  };
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
 
   const submitHandler = event => {
+    const enteredName = nameInputRef.current.value;
+    const enteredUserAge = ageInputRef.current.value;
     event.preventDefault();
     const userData = {
-      username: enteredUsername,
-      age: +enteredAge,
+      username: enteredName,
+      age: +enteredUserAge,
       id: Math.random().toString()
     };
     props.onAddUser(userData);
-    setEnteredUsername('');
-    setEnteredAge('');
+    nameInputRef.current.value = '';
+    ageInputRef.current.value = '';
   };
 
   return (
@@ -30,11 +25,11 @@ const AddUser = props => {
       <div className={styles.input}>
         <div>
           <label htmlFor="username">Username</label>
-          <input type="text" value={enteredUsername} onChange={usernameChangeHandler} />
+          <input type="text" ref={nameInputRef} />
         </div>
         <div>
           <label htmlFor="age">Age (Years)</label>
-          <input type="number" value={enteredAge} onChange={ageChangeHandler} />
+          <input type="number" ref={ageInputRef} />
         </div>
         <button className={buttonStyles.button} type="submit">Add User</button>
       </div>
