@@ -1,4 +1,4 @@
-import {useState, React} from 'react';
+import {useState, React, Fragment} from 'react';
 import Card from './components/UI/Card';
 import AddUser from './components/AddUser/AddUser';
 import UsersList from './components/UsersList/UsersList';
@@ -29,13 +29,13 @@ function App() {
   }
 
   return (
-    <div>
+    <Fragment>
       <Card>
         <AddUser onAddUser={addUserHandler} />
       </Card>
       {users.length === 0 ? '' : <Card><UsersList users={users} /></Card> }
       {!isValid ? <ErrorModal onCancel={hideModal} age={isValidAge} /> : ''}
-    </div>
+    </Fragment>
   );
 }
 
