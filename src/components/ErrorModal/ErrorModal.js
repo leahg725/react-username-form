@@ -21,7 +21,7 @@ const Overlay = props => {
       <div className={styles.content}>
         <p>{text}</p>
         <div className={styles.actions}>
-          <button className={buttonStyles.button} onClick={props.onCancel}>Okay</button>
+          <button className={buttonStyles.button} onClick={props.onCancel}>Oka</button>
         </div>
       </div>
     </Card>
